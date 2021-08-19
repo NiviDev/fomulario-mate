@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Ejercicio "Build a Survey Form" del curso "Responsive Web Design" de Free Code Camp.
+        Autor: Nicolás Vilurón-->
+
+    <meta charset="utf-8">
+    <title>Formulario</title>
+
+    <!--Inicio de codigo CSS-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            font-size: 2rem;
+            line-height: 1.5;
+            text-align: start;
+            margin: 2rem;
+            background-image: linear-gradient(
+                115deg,
+                rgba(58, 158, 63, 0.8),
+                rgba(138, 206, 136, 0.7)
+            ),
+                url(https://www.filo.news/__export/1519653660915/sites/claro/img/2018/02/26/mate_1.jpg_673822677.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+            margin: 0;
+        }
+
+        @media (max-width) {
+            h1 {
+                font-size: 1rem;
+                line-height: 1.2;
+            }
+        }
+
+        main {
+            margin: 30px 8px;
+            padding: 15px;
+            border-radius: 5px;
+            background: rgba(25, 75, 23.7, 0.8);
+        }
+
+        label, p {
+            color: #C7FFCF;
+        }
+        
+        #description {
+            color: #152815;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px){
+            #description {
+                text-align: center;
+            }
+        }
+
+        fieldset {
+            border-radius: 5px;
+        }
+
+        #opc {
+            margin-bottom: -5px;
+        }
+
+        #dropdown {
+            margin-bottom: 15px;
+            margin-left: 10px;
+        }
+
+        input {
+            border-radius: 5px;
+        }
+
+        #datos {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 15% 30%;
+            grid-template-rows: auto auto auto;
+            grid-template-areas: 
+                "nombre nombretext"
+                "email emailtext"
+                "edad edadtext";
+            grid-gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            #datos {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: repeat(6,auto);
+                grid-template-areas: 
+                    "nombre"
+                    "nombretext"
+                    "email"
+                    "emailtext"
+                    "edad"
+                    "edadtext";
+            }
+        }
+
+        #name-label {
+            grid-area: nombre;
+            justify-self: center;
+        }
+
+        #name {
+            grid-area: nombretext;
+        }
+
+        #email-label {
+            grid-area: email;
+            justify-self: center;
+        }
+
+        #email {
+            grid-area: emailtext;
+        }
+
+        #number-label {
+            grid-area: edad;
+            justify-self: center;
+        }
+
+        #number {
+            grid-area: edadtext;
+        }
+
+        #dudas:focus, .relleno:focus {
+            border-color: #5f9d52;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(30, 129, 30, 0.25);
+        }
+
+        #dudas {
+            background-color: #5f9d52;
+            max-width: 100%;
+            color: #152815;
+            font-weight: bold;
+        }
+
+        #submit {
+            margin-top: 20px;
+            width: 100px;
+            height: 30px;
+            background-color: #5f9d52;
+            color: #152815;
+            font-weight: bold;
+        }
+
+        #submit:hover {
+            animation-name: background-color;
+            animation-duration: 500ms;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes background-color {
+            100% {
+                background-color: seagreen;
+            }
+        }
+
+        footer {
+            font-size: small;
+            display: grid;
+            border-radius: 5px;
+            background: rgba(25, 75, 23.7, 0.9);
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                "info contacto";
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                grid-template-areas: "info" "contacto";
+            }
+        }
+
+        #info {
+            grid-area: info;
+            justify-self: start;
+            margin-left: 10px;
+        }
+
+        #contacto {
+            grid-area: contacto;
+            justify-self: start;
+            margin-left: 10px;
+        }
+
+        a {
+            color: rgb(92, 160, 134)
+        }
+        a:visited {
+            color: wheat;
+        }
+    </style>
+    <!--Fin de codigo CSS-->
+</head>
+<body>
+    <header>
+        <h1 id="title">Curso de cebador de mates profesional</h1>
+
+        <p id="description">Si tus amigos siempre te cargan porque cebas los mates lavados, o si queres
+            impresionar a esa persona a la que le dijiste que cebas los mejores mates del pais te invito
+            a anotarte en este curso para mejorar tus habilidades de cebador.
+        </p>
+    </header>
+
+    <main>
+        <form id="survey-form" action="">
+            <div id="datos">
+                <label id="name-label" for="name">Nombre: </label>
+                <input id="name" type="text" name="name" placeholder="Martin Fierro" class="relleno" required><br>
+
+                <label id="email-label" for="email">Email: </label>
+                <input id="email" type="email" name="email" placeholder="cebador@example.com" class="relleno" required><br>
+
+                <label id="number-label" for="number">Edad: </label>
+                <input id="number" type="number" name="edad" min="18" max="99" placeholder="Debe ser mayor de 18" class="relleno"><br>    
+            </div>
+            <p id="opc">¿Que opción te describe mejor?</p>
+            <select name="rol" id="dropdown" required>
+                <option disabled selected value>Selecciona una opción</option>
+                <option value="principiante">Siempre se me lava</option>
+                <option value="intermedio">Al principio va todo bien, despues me joden</option>
+                <option value="avanzado">Me va bien, pero quiero mejorar</option>
+            </select>
+            <br>
+            <fieldset>
+                <p>Indica la cantidad de amigos que tenés (Información de suma relevancia para el curso)</p>
+
+                <input id="pocos" type="radio" name="amigos" value="pocos">
+                <label for="pocos">Pocos, pero de los buenos (1 ó 2).</label><br>
+
+                <input id="medio" type="radio" name="amigos" value="medio">
+                <label for="medio">Un grupo pequeño (Hasta 5).</label><br>
+
+                <input id="varios" type="radio" name="amigos" value="varios">
+                <label for="varios">Varios mas, aunque la mayoria estan para la joda nomas.</label><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <p>Selecciona las marcas de yerba que usas o que te gustan.</p>
+
+                <input id="amanda" type="checkbox" name="yerba" value="amanda">
+                <label for="amanda">Amanda</label><br>
+
+                <input id="rosamonte" type="checkbox" name="yerba" value="rosamonte">
+                <label for="rosamonte">Rosamonte</label><br>
+
+                <input id="tranquera" type="checkbox" name="yerba" value="tranquera">
+                <label for="tranquera">La tranquera</label><br>
+
+                <input id="playadito" type="checkbox" name="yerba" value="playadito">
+                <label for="playadito">Playadito</label><br>
+
+                <input id="otra" type="checkbox" name="yerba" value="otra">
+                <label for="otra">Otra</label><br>
+            </fieldset>
+
+            <p>Si tenes alguna duda o comentario sobre el curso podés dejarla en este campo:</p>
+            <textarea name="dudas" id="dudas" cols="70" rows="10" placeholder="Escribí tus dudas o comentarios aca..."></textarea>
+            <br>
+            <input id="submit" type="submit" name="enviar" value="Enviar">
+        </form>
+    </main>
+
+    <footer>
+        <div  id="info">
+            <p>
+                Ejercicio <em>Build a Survey Form</em> del curso "Responsive Web Design" de <a href="https://www.freecodecamp.org" target="_blank">Free Code Camp.</a>
+                <br>
+                Autor: Nicolás Vilurón
+            </p>
+        </div>
+        <div id="contacto">
+            <p>
+                Información de contacto: <br>
+                <div id="redes">
+                    <p>viluronnicolas@gmail.com
+                        <a href="mailto:viluronnicolas@gmail.com" target="_blank"><svg shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" xmlns="http://www.w3.org/2000/svg" width="25" height="18.09" viewBox="7.086 7.087 1277.149 924.008"><path fill="none" d="M1138.734 931.095h.283M1139.017 931.095h-.283"/><path d="M1179.439 7.087c57.543 0 104.627 47.083 104.627 104.626v30.331l-145.36 103.833-494.873 340.894L148.96 242.419v688.676h-37.247c-57.543 0-104.627-47.082-104.627-104.625V111.742C7.086 54.198 54.17 7.115 111.713 7.115l532.12 394.525L1179.41 7.115l.029-.028z" fill="#e75a4d"/><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#a)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><path fill="#e7e4d7" d="M148.96 242.419v688.676h989.774V245.877L643.833 586.771z"/><path fill="#b8b7ae" d="M148.96 931.095l494.873-344.324-2.24-1.586L148.96 923.527z"/><path fill="#b7b6ad" d="M1138.734 245.877l.283 685.218-495.184-344.324z"/><path d="M1284.066 142.044l.17 684.51c-2.494 76.082-35.461 103.238-145.219 104.514l-.283-685.219 145.36-103.833-.028.028z" fill="#b2392f"/><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#b)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="c" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#c)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="d" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#d)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="e" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#e)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="f" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#f)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#g)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><linearGradient id="h" gradientUnits="userSpaceOnUse" x1="1959.712" y1="737.107" x2="26066.213" y2="737.107" gradientTransform="matrix(.0283 0 0 -.0283 248.36 225.244)"><stop offset="0" stop-color="#f8f6ef"/><stop offset="1" stop-color="#e7e4d6"/></linearGradient><path fill="url(#h)" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/><path fill="#f7f5ed" d="M111.713 7.087l532.12 394.525L1179.439 7.087z"/></svg></a>
+                    </p>
+                    <p>
+                        Nicolás Vilurón
+                        <a href="https://www.linkedin.com/in/nicol%C3%A1s-vilur%C3%B3n-341888209/" target="_blank"><svg height="25" width="24.9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><g fill="none"><path d="M0 18.338C0 8.216 8.474 0 18.92 0h218.16C247.53 0 256 8.216 256 18.338v219.327C256 247.79 247.53 256 237.08 256H18.92C8.475 256 0 247.791 0 237.668V18.335z" fill="#069"/><path d="M77.796 214.238V98.986H39.488v115.252H77.8zM58.65 83.253c13.356 0 21.671-8.85 21.671-19.91-.25-11.312-8.315-19.915-21.417-19.915-13.111 0-21.674 8.603-21.674 19.914 0 11.06 8.312 19.91 21.169 19.91h.248zM99 214.238h38.305v-64.355c0-3.44.25-6.889 1.262-9.346 2.768-6.885 9.071-14.012 19.656-14.012 13.858 0 19.405 10.568 19.405 26.063v61.65h38.304v-66.082c0-35.399-18.896-51.872-44.099-51.872-20.663 0-29.738 11.549-34.78 19.415h.255V98.99H99.002c.5 10.812-.003 115.252-.003 115.252z" fill="#fff"/></g></svg></a>
+                    </p>
+                </div>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
